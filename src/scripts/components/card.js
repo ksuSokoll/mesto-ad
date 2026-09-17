@@ -15,15 +15,14 @@ const getTemplate = () => {
 
 export const createCardElement = (
   data,
-  { onPreviewPicture, onLikeIcon, onDeleteCard, onInfoCard },
+  { onPreviewPicture, onLikeIcon, onDeleteCard },
   userId
 ) => {
   const cardElement = getTemplate();
   const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__control-button_type_delete");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
   const cardImage = cardElement.querySelector(".card__image");
   const likeCountElement = cardElement.querySelector(".card__like-count");
-  const infoButton = cardElement.querySelector(".card__control-button_type_info");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
@@ -32,7 +31,7 @@ export const createCardElement = (
   likeCountElement.textContent = data.likes.length;
 
   const isLikedByMe = data.likes.some((like) => like._id === userId);
-  
+
   if (isLikedByMe) {
     likeButton.classList.add("card__like-button_is-active");
   }
@@ -41,26 +40,26 @@ export const createCardElement = (
     deleteButton.remove();
   } else {
     if (onDeleteCard) {
-      deleteButton.addEventListener("click", () => onDeleteCard(cardElement, data._id));
+      deleteButton.addEventListener("click", () =>
+        onDeleteCard(cardElement, data._id)
+      );
     }
   }
 
   if (onLikeIcon) {
     likeButton.addEventListener("click", () => {
-      const currentLikeStatus = likeButton.classList.contains("card__like-button_is-active");
+      const currentLikeStatus = likeButton.classList.contains(
+        "card__like-button_is-active"
+      );
       onLikeIcon(likeButton, currentLikeStatus, data._id, likeCountElement);
     });
   }
 
-  if (infoButton && onInfoCard) {
-    infoButton.addEventListener("click", () => onInfoCard(data._id));
-  }
-
   if (onPreviewPicture) {
-    cardImage.addEventListener("click", () => onPreviewPicture({ name: data.name, link: data.link }));
+    cardImage.addEventListener("click", () =>
+      onPreviewPicture({ name: data.name, link: data.link })
+    );
   }
 
   return cardElement;
 };
-
-
