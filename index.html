@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesto</title>
-  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="./src/pages/index.css" />
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto" />
+      <img class="header__logo" src="./src/images/logo.svg" alt="Логотип Mesto" />
     </header>
     <main class="content">
       <section class="profile page__section">
@@ -30,7 +30,6 @@
     </footer>
   </div>
 
-  <!-- Шаблон карточки -->
   <template id="card-template">
     <article class="card">
       <img class="card__image" src="#" alt="#" />
@@ -45,38 +44,17 @@
     </article>
   </template>
 
-  <!-- Модальное окно редактирования профиля -->
   <div class="popup popup_type_edit">
     <div class="popup__content">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="edit-profile" novalidate>
         <label class="popup__label">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            class="popup__input popup__input_type_name"
-            placeholder="Имя"
-            required
-            minlength="2"
-            maxlength="40"
-            pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$"
-            data-error-message="Разрешены только буквы, дефис и пробел"
-          />
+          <input type="text" name="name" id="name" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$" data-error-message="Разрешены только буквы, дефис и пробел" />
           <span class="popup__error" id="name-error"></span>
         </label>
         <label class="popup__label">
-          <input
-            type="text"
-            name="about"
-            id="about"
-            class="popup__input popup__input_type_description"
-            placeholder="О себе"
-            required
-            minlength="2"
-            maxlength="200"
-          />
+          <input type="text" name="about" id="about" class="popup__input popup__input_type_description" placeholder="О себе" required minlength="2" maxlength="200" />
           <span class="popup__error" id="about-error"></span>
         </label>
         <button class="popup__button popup__button_disabled" type="submit" disabled>Сохранить</button>
@@ -84,36 +62,17 @@
     </div>
   </div>
 
-  <!-- Модальное окно добавления карточки -->
   <div class="popup popup_type_add">
     <div class="popup__content">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="new-card" novalidate>
         <label class="popup__label">
-          <input
-            type="text"
-            name="name"
-            id="card-name"
-            class="popup__input popup__input_type_card-name"
-            placeholder="Название"
-            required
-            minlength="2"
-            maxlength="30"
-            pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$"
-            data-error-message="Разрешены только буквы, дефис и пробел"
-          />
+          <input type="text" name="name" id="card-name" class="popup__input popup__input_type_card-name" placeholder="Название" required minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-ЯёЁ\s\-]+$" data-error-message="Разрешены только буквы, дефис и пробел" />
           <span class="popup__error" id="card-name-error"></span>
         </label>
         <label class="popup__label">
-          <input
-            type="url"
-            name="link"
-            id="card-link"
-            class="popup__input popup__input_type_url"
-            placeholder="Ссылка на картинку"
-            required
-          />
+          <input type="url" name="link" id="card-link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required />
           <span class="popup__error" id="card-link-error"></span>
         </label>
         <button class="popup__button popup__button_disabled" type="submit" disabled>Создать</button>
@@ -121,21 +80,13 @@
     </div>
   </div>
 
-  <!-- Модальное окно обновления аватара -->
   <div class="popup popup_type_avatar">
     <div class="popup__content">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Обновить аватар</h2>
       <form class="popup__form" name="avatar" novalidate>
         <label class="popup__label">
-          <input
-            type="url"
-            name="avatar"
-            id="avatar-link"
-            class="popup__input popup__input_type_avatar"
-            placeholder="Ссылка на аватар"
-            required
-          />
+          <input type="url" name="avatar" id="avatar-link" class="popup__input popup__input_type_avatar" placeholder="Ссылка на аватар" required />
           <span class="popup__error" id="avatar-link-error"></span>
         </label>
         <button class="popup__button popup__button_disabled" type="submit" disabled>Сохранить</button>
@@ -143,7 +94,6 @@
     </div>
   </div>
 
-  <!-- Модальное окно просмотра изображения -->
   <div class="popup popup_type_image">
     <div class="popup__content popup__content_image">
       <button class="popup__close" type="button" aria-label="Закрыть"></button>
